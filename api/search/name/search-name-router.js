@@ -1,5 +1,6 @@
 const express = require("express");
 const axios = require("axios");
+require("dotenv").config();
 
 const router = express.Router();
 
@@ -10,11 +11,11 @@ router.get("/", (req, res) => {
   res.status(401).json({ message: "Please enter a search term" });
 });
 
-router.get("/:searchTerm", (req, res) => {
-  const { searchTerm } = req.params;
+router.get("/:name", (req, res) => {
+  const { name } = req.params;
 
   try {
-    axios.get(`${BASE_URL}${API_KEY}/search/${searchTerm}`).then((response) => {
+    axios.get(`${BASE_URL}${API_KEY}/search/${name}`).then((response) => {
       res.json(response.data.results);
     });
   } catch (err) {

@@ -1,7 +1,7 @@
 const app = require("./api/server");
-
-const PORT = process.env.PORT || 5000;
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log("Server up and running.");
+  console.log(`Server up and running.`);
 });
